@@ -13,6 +13,6 @@ storiesOf('{{componentName}}', module)
       data() {
         return {};
       },
-      template: ``,
+      template: '',
     }
   });

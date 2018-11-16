@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 const program = require('commander');
 const Path = require('path');
 const { spawnSync } = require('child_process');
@@ -48,12 +47,15 @@ program
     });
     try {
       const type = await selectComponentType();
-      const storyTemplate = fs.readFileSync('./fileTemplates/componentStory.js', 'utf8');
-      const componentTemplate = fs.readFileSync('./fileTemplates/componentTemplate.js', 'utf8');
-      const path = Path.resolve(__dirname, componentsPath.parsed.SP_COMPONENTS_FILE_PATH, `./${type}`);
+      const storyTemplate = fs.readFileSync(Path.resolve(__dirname, './fileTemplates/componentStory.js'), 'utf8');
+      const componentTemplate = fs.readFileSync(Path.resolve(__dirname, './fileTemplates/componentTemplate.js'), 'utf8');
+      const componentREADME = fs.readFileSync(Path.resolve(__dirname, './fileTemplates/componentREADME.js'), 'utf8');
+      const path = Path.resolve(process.cwd(), componentsPath.parsed.SP_COMPONENTS_FILE_PATH, `./${type}`);
       spawnSync('mkdir', [`${path}/${name}`]);
       fs.writeFileSync(`${path}/${name}/${name}.story.js`, storyTemplate.replace(/\{\{componentName\}\}/gm, name));
       fs.writeFileSync(`${path}/${name}/${name}.vue`, componentTemplate.replace(/\{\{componentName\}\}/gm, name));
+      fs.writeFileSync(`${path}/${name}/${name}.md`, componentREADME.replace(/\{\{componentName\}\}/gm, name));
+      fs.writeFileSync(`${path}/${name}/${name}.scss`, '');
     } catch (error) {
       console.log(error);
     }
