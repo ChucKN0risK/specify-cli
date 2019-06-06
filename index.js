@@ -54,7 +54,7 @@ program
       spawnSync('mkdir', [`${path}/${name}`]);
       fs.writeFileSync(`${path}/${name}/${name}.story.js`, storyTemplate.replace(/\{\{componentName\}\}/gm, name));
       fs.writeFileSync(`${path}/${name}/${name}.vue`, componentTemplate.replace(/\{\{componentName\}\}/gm, name));
-      fs.writeFileSync(`${path}/${name}/${name}.md`, componentREADME.replace(/\{\{componentName\}\}/gm, name));
+      fs.writeFileSync(`${path}/${name}/README.md`, componentREADME.replace(/\{\{componentName\}\}/gm, name));
       fs.writeFileSync(`${path}/${name}/${name}.scss`, '');
     } catch (error) {
       console.log(error);
