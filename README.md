@@ -5,6 +5,8 @@ This CLI allows you to create a component with a specific structure:
 ```
 └── MyComponent
     ├── MyComponent.vue
+    ├── MyComponent.md
+    ├── MyComponent.scss
     └── MyComponent.story.js
 ```
 
