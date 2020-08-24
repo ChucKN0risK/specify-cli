@@ -47,14 +47,14 @@ program
     });
     try {
       const type = await selectComponentType();
-      const storyTemplate = fs.readFileSync(Path.resolve(__dirname, './fileTemplates/componentStory.js'), 'utf8');
+      // const storyTemplate = fs.readFileSync(Path.resolve(__dirname, './fileTemplates/componentStory.js'), 'utf8');
       const componentTemplate = fs.readFileSync(Path.resolve(__dirname, './fileTemplates/componentTemplate.js'), 'utf8');
-      const componentREADME = fs.readFileSync(Path.resolve(__dirname, './fileTemplates/componentREADME.js'), 'utf8');
+      // const componentREADME = fs.readFileSync(Path.resolve(__dirname, './fileTemplates/componentREADME.js'), 'utf8');
       const path = Path.resolve(process.cwd(), componentsPath.parsed.SP_COMPONENTS_FILE_PATH, `./${type}`);
       spawnSync('mkdir', [`${path}/${name}`]);
-      fs.writeFileSync(`${path}/${name}/${name}.story.js`, storyTemplate.replace(/\{\{componentName\}\}/gm, name));
+      // fs.writeFileSync(`${path}/${name}/${name}.story.js`, storyTemplate.replace(/\{\{componentName\}\}/gm, name));
       fs.writeFileSync(`${path}/${name}/${name}.vue`, componentTemplate.replace(/\{\{componentName\}\}/gm, name));
-      fs.writeFileSync(`${path}/${name}/README.md`, componentREADME.replace(/\{\{componentName\}\}/gm, name));
+      // fs.writeFileSync(`${path}/${name}/README.md`, componentREADME.replace(/\{\{componentName\}\}/gm, name));
       fs.writeFileSync(`${path}/${name}/${name}.scss`, '');
     } catch (error) {
       console.log(error);
